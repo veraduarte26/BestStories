@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using BestStories.Model;
 
 namespace BestStories.Controllers
 {
@@ -12,10 +14,11 @@ namespace BestStories.Controllers
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<List<ReturnedStorie>> Get()
         {
-            return new string[] { "value1", "value2" };
-        }
+            var stories = ManageStorie.getTopTwenty();
+            return stories;
+           }
 
         // GET api/values/5
         [HttpGet("{id}")]
